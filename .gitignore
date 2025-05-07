@@ -60,3 +60,14 @@ htmlcov/
 .tox/
 .nox/
 
+actions/venv/
+.history/
+results/
+credentials.yml
+**/config/**.yml
+**/data/nlu/lookup_tables/
+out/
+.rasa-data/
+*.db
+*.db-shm
+*.db-wal
