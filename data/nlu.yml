@@ -1,0 +1,55 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hello
+    - hi
+    - hey
+    - good morning
+    - good evening
+    - start
+    - let's begin
+    - begin
+
+- intent: goodbye
+  examples: |
+    - goodbye
+    - bye
+    - see you
+    - see you later
+    - quit
+    - exit
+
+- intent: translation
+  examples: |
+    - [яблоко](translation)
+    - [привет](translation)
+    - [собака](translation)
+    - [кошка](translation)
+    - [дом](translation)
+    - [книга](translation)
+    - [вода](translation)
+    - [машина](translation)
+    - translation is [яблоко](translation)
+    - I think it's [привет](translation)
+    - maybe [собака](translation)
+    - the answer is [кошка](translation)
+    - [дом](translation) is my answer
+    - [книга](translation) I think
+    - [вода](translation)
+    - [машина](translation)
+    - [компьютер](translation)
+    - [мир](translation)
+    - [человек](translation)
+    - [школа](translation)
+    - [окно](translation)
+    - [дверь](translation)
+
+- intent: restart
+  examples: |
+    - restart
+    - start over
+    - begin again
+    - new game
+    - new session

@@ -1,0 +1,22 @@
+version: "3.1"
+
+rules:
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Start the conversation with greeting
+  conversation_start: true
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: action_provide_word
+  - action: utter_first_word
+
+- rule: Check translation after user input
+  steps:
+  - intent: translation
+  - action: action_check_translation
+
+

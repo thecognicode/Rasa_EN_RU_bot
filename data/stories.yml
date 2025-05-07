@@ -1,0 +1,29 @@
+version: "3.1"
+
+stories:
+- story: vocabulary practice
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: action_provide_word
+  - action: utter_first_word
+  - intent: translation
+  - action: action_check_translation
+  - intent: translation
+  - action: action_check_translation
+  - intent: translation
+  - action: action_check_translation
+
+- story: end practice
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: restart practice
+  steps:
+  - intent: restart
+  - action: action_restart
+  - intent: greet
+  - action: utter_greet
+  - action: action_provide_word
+  - action: utter_first_word

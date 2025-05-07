@@ -1,0 +1,54 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - translation
+  - restart
+
+entities:
+  - translation
+
+slots:
+  current_word:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  correct_translation:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+responses:
+  utter_greet:
+    - text: "Hello! I'll help you practice Russian vocabulary. I'll give you English words, and you type the Russian translation."
+    - text: "Hi there! Let's practice Russian vocabulary. I'll give you English words to translate."
+
+  utter_goodbye:
+    - text: "Goodbye! Come back soon to practice more vocabulary."
+    - text: "До свидания! (Goodbye!) Thanks for practicing!"
+
+  utter_correct:
+    - text: "Well done! Here's the next word: {current_word}"
+    - text: "Great job! Let's try another one: {current_word}"
+    - text: "You're doing great! Next word: {current_word}"
+    - text: "Perfect! Now translate: {current_word}"
+
+  utter_incorrect:
+    - text: "Not quite right. The correct answer was {correct_translation}. Here's the next word: {current_word}"
+    - text: "Keep trying! The correct translation was {correct_translation}. Next word: {current_word}"
+
+  utter_first_word:
+    - text: "Let's start! Translate this word to Russian: {current_word}"
+    - text: "Here's your first word: {current_word}"
+
+actions:
+  - action_check_translation
+  - action_provide_word
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
