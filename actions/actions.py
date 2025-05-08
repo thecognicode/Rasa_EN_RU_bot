@@ -4,7 +4,6 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 import random
 
-# English-Russian vocabulary dictionary
 vocabulary = {
     "apple": "яблоко",
     "dog": "собака",
@@ -35,12 +34,11 @@ class ActionProvideWord(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-        # Select a random English word
+      
         word = random.choice(list(vocabulary.keys()))
         translation = vocabulary[word]
         
-        # Return slots
+       
         return [SlotSet("current_word", word), SlotSet("correct_translation", translation)]
         
 
@@ -52,35 +50,33 @@ class ActionCheckTranslation(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        # Get the user's translation answer
+        
         user_translation = next(tracker.get_latest_entity_values("translation"), None)
         current_word = tracker.get_slot("current_word")
         correct_translation = tracker.get_slot("correct_translation")
         
-        # If no entity was extracted, handle it gracefully
+       
         if not user_translation:
-            # Select a new word
+          
             new_word = random.choice(list(vocabulary.keys()))
             new_translation = vocabulary[new_word]
             
             dispatcher.utter_message(text=f"I didn't catch your translation. Let's try another word: {new_word}")
             return [SlotSet("current_word", new_word), SlotSet("correct_translation", new_translation)]
         
-        # Check if translation is correct
+      
         if user_translation.lower() == correct_translation.lower():
-            # Get a new word for the next round
+     
             new_word = random.choice(list(vocabulary.keys()))
             new_translation = vocabulary[new_word]
-            
-            # Use a response template for correct answers
+           
             dispatcher.utter_message(response="utter_correct", current_word=new_word)
             return [SlotSet("current_word", new_word), SlotSet("correct_translation", new_translation)]
         else:
-            # Get a new word for the next round
             new_word = random.choice(list(vocabulary.keys()))
             new_translation = vocabulary[new_word]
             
-            # Use a response template for incorrect answers
+        
             dispatcher.utter_message(response="utter_incorrect", 
                                     correct_translation=correct_translation,
                                     current_word=new_word)
