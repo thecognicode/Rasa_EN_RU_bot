@@ -25,7 +25,7 @@ Make sure you have:
 
     Clone the repo:
 
-git clone https://github.com/thecognicode/Rasa-EN-RU-chatbot.git
+git clone https://github.com/thecognicode/Rasa-EN-RU-bot.git
 
 cd Rasa-chatbot
 
