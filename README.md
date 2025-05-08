@@ -46,7 +46,7 @@ rasa train
 
 rasa run actions (run this in one terminal)
 
-Then, open another terminaland type:
-rasa shell
+Then open another terminal and type:
+rasa shell (don't forget to activate your virtual environment before running this command/it applies for rasa run actions too if you opened it in a separate terminal)
 
 ##  Et voilà! Now you can start learning a few new words each day by chatting with the bot💛
