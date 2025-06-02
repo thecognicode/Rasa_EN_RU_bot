@@ -71,3 +71,5 @@ out/
 *.db
 *.db-shm
 *.db-wal
+
+credentials.yml
